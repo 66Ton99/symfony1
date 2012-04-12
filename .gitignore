@@ -1,0 +1,3 @@
+/test/functional/fixtures/cache
+/test/functional/fixtures/log
+/lib/plugins/sfPropelPlugin/test/functional/fixtures/data/database.sqlite
