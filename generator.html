@@ -51,8 +51,8 @@ body
 <div class="content">
 
   <h3>Options in this order: &lt;APP&gt; &lt;MODULE&gt; &lt;OBJECT&gt;</h3>
-  <span class="method">$ symfony propel-init-admin backend post Post</span><br /> 
-  <span class="method">$ symfony propel-init-admin backend comment Comment</span><br />
+  <span class="method">$ symfony doctrine:generate-admin backend post Post</span><br /> 
+  <span class="method">$ symfony propel:generate-admin backend comment Comment</span><br />
 
 </div>
 </div>
@@ -116,7 +116,7 @@ generator:
     theme:            default
 
     fields:
-      author_id:      { name: Post author }
+      author_id:      { lable: Post author }
     
     list:
       title:          symfony blog posts
@@ -125,6 +125,7 @@ generator:
         published_on:
           label: Published
           params: date_format='dd/MM/yy'
+          is_real: true
       <!--filters:        [title, category_id, is_published]-->
       layout:         stacked
       params: |
@@ -258,7 +259,7 @@ edit:
 <pre>
   actions:
     my_action:
-      name:        Add a comment
+      lable:        Add a comment
       action:      addComment
       icon:        backend/addcomment.png
       only_for:    edit        ## Restrict to edit or create
@@ -283,7 +284,7 @@ edit:
 <pre>
 fields:
   my_field:
-    name:        ## Field label/header
+    lable:        ## Field label/header
     help:        ## Tooltip, displays when requested
     type:        ## for edit view only, see below
     credentials: ## Classic AND/OR credentials array
@@ -294,13 +295,13 @@ First declaration covers the whole module<br />
 can be specialized for each view
 <pre>
 fields:
-  author:   { name: Author }
+  author:   { lable: Author }
 list:
   fields:
     author: { help: This is the author of the comment } 
 edit:
   fields:
-    author: { name: Author of the comment }
+    author: { lable: Author of the comment }
 </pre>
 <h3>Input types</h3>
 <pre>
@@ -365,7 +366,7 @@ Use the name without prefix under the <span class="method">fields:</span> key.
 list:
   display:        [_post_link]
   fields:
-    post_link:    { label: Related Post }
+    post_link:    { label: Related Post, is_real: false }
 </pre>
 <br />
 <div style="float:right;">modules/comment/templates/_post_link.php</div>
