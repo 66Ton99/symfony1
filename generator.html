@@ -116,15 +116,16 @@ generator:
     theme:            default
 
     fields:
-      author_id:      { lable: Post author }
+      author_id:      { label: Post author }
     
     list:
       title:          symfony blog posts
       display:        [title, author_id, category_id, published_on]
       fields:
         published_on:
+          type: Date
           label: Published
-          params: date_format='dd/MM/yy'
+          date_format: 'dd/MM/yy'
           is_real: true
       <!--filters:        [title, category_id, is_published]-->
       layout:         stacked
@@ -146,7 +147,7 @@ generator:
         author_id:
           params:     size=5 include_custom=Choose an author
         is_published: { credentials: [[admin, superdamin]] }
-        created_on:   { type: plain, params: date_format='dd/MM' }
+        created_on:   { type: Date, date_format: 'dd/MM' }
 </pre>
 
 </div>
@@ -259,7 +260,7 @@ edit:
 <pre>
   actions:
     my_action:
-      lable:        Add a comment
+      label:        Add a comment
       action:      addComment
       icon:        backend/addcomment.png
       only_for:    edit        ## Restrict to edit or create
@@ -284,7 +285,7 @@ edit:
 <pre>
 fields:
   my_field:
-    lable:        ## Field label/header
+    label:        ## Field label/header
     help:        ## Tooltip, displays when requested
     type:        ## for edit view only, see below
     credentials: ## Classic AND/OR credentials array
@@ -295,13 +296,13 @@ First declaration covers the whole module<br />
 can be specialized for each view
 <pre>
 fields:
-  author:   { lable: Author }
+  author:   { label: Author }
 list:
   fields:
     author: { help: This is the author of the comment } 
 edit:
   fields:
-    author: { lable: Author of the comment }
+    author: { label: Author of the comment }
 </pre>
 <h3>Input types</h3>
 <pre>
@@ -324,13 +325,13 @@ fields:
 fields:
   my_field:
     params:
-      disabled=true             
-      date_format='MM/dd/yy' ## For dates
-      include_blank=true     ## For select tags
-      include_custom=Choose from the list
-      size=45x5              ## For textareas
-      rich=true
-      tinymce_options=height:150
+      disabled: true             
+      date_format: 'MM/dd/yy' ## For dates but "type" must be "Date"
+      include_blank: true     ## For select tags
+      include_custom: Choose from the list
+      size: 45x5              ## For textareas
+      rich: true
+      tinymce_options: height:150
 </pre>
 
 </div>
@@ -347,7 +348,7 @@ Fields not defined in the <span class="method">schema.xml</span> but for which a
 list:
   display:        [nb_comments]
   fields:
-    nb_comments:  { lable: Number of comments }
+    nb_comments:  { label: Number of comments }
 </pre>
 <br />
 <div style="float:right;">apps/lib/model/Post.php</div>
