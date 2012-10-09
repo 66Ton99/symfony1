@@ -1,0 +1,17 @@
+{
+    "name": "symfony",
+    "type": "library",
+    "description": "Symfony 1.4",
+    "keywords": ["symfony"],
+    "homepage": "http://symfony-project.org",
+    "license": "ICU",
+    "authors": [
+        {
+            "name": "Fabien Potencier",
+            "email": "fabien@symfony.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.4"
+    }
+}
