@@ -112,43 +112,51 @@ body
 generator:
   class:              sfPropelAdminGenerator
   param:
-    model_class:      Post
-    theme:            default
-    css:              custom.css
+    model_class:            Post
+    moduleName:             null
+    actions_base_class:     sfActions
+    singular:               post
+    plural:                 post_list
+    i18n_catalogue:         messages
+    theme:                  default
+    css:                    custom.css
+    credentials:            []
+    non_verbose_templates:  null
+    route_prefix:           ''
 
     fields:
-      author_id:      { label: Post author }
+      author_id:        { label: Post author }
     
     list:
-      title:          symfony blog posts
-      display:        [title, author_id, category_id, published_on]
+      title:            symfony blog posts
+      display:          [title, author_id, category_id, published_on]
       fields:
         published_on:
           type: Date
           label: Published
-          date_format: 'dd/MM/yy'
+          date_format:  'dd/MM/yy'
           is_real: true
       <!--filters:        [title, category_id, is_published]-->
-      layout:         stacked
+      layout:           stacked
       params: |
         %%is_published%%&lt;strong&gt;%%=title%%&lt;/strong&gt;&lt;br /&gt;
         &lt;em&gt;by %%author%% in %%category%% 
         (%%published_on%%)&lt;/em&gt;&lt;p&gt;%%content_summary%%&lt;/p&gt;
       max_per_page:   2
       
-    edit:
-      title:          Editing post "%%title%%"
+    edit:   
+      title:            Editing post "%%title%%"
       display:
-        "Post":       [title, category_id, content]
-        "Workflow":   [author_id, is_published, created_on]
+        "Post":         [title, category_id, content]
+        "Workflow":     [author_id, is_published, created_on]
       fields:
-        category_id:  { params: disabled=true }
+        category_id:    { params: disabled=true }
         content:
-          params:     rich=true tinymce_options=height:150
+          params:       rich=true tinymce_options=height:150
         author_id:
-          params:     size=5 include_custom=Choose an author
-        is_published: { credentials: [[admin, superdamin]] }
-        created_on:   { type: Date, date_format: 'dd/MM' }
+          params:       size=5 include_custom=Choose an author
+        is_published:   { credentials: [[admin, superdamin]] }
+        created_on:     { type: Date, date_format: 'dd/MM' }
 </pre>
 
 </div>
